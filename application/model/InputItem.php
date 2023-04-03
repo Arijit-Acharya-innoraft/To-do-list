@@ -1,6 +1,4 @@
 <?php
-// Requiring the database connection file.
-require_once "db_conn.php";
 
 /**
  * This class contains the database queries.
@@ -73,8 +71,49 @@ class InputItem {
     $con->query($qry);
   }
 
+  /**
+   * This function is used for setting the item done.
+   * @param object $con
+   *   It is an object of the mysqli class.
+   * @param string $slno
+   *   It stores the serial no of the text.
+   */
+  function mark($con,$slno) {
+    $qry = "UPDATE to_do SET mark = 'done' WHERE slno = " . $slno . ";";
+    $con->query($qry);
+  }
+
+   /**
+   * This function is used for setting the item undone.
+   * 
+   * @param object $con
+   *   It is an object of the mysqli class.
+   * @param string $slno
+   *   It stores the serial no of the text.
+   */
+  function unmark($con,$slno){
+    $qry = "UPDATE to_do SET mark = 'notdone' WHERE slno = " . $slno . ";";
+    $con->query($qry);
+  }
+
+  /**
+   * This function is used for checking if the item is done or not.
+   * 
+   * @param object $con
+   *   It is an object of the mysqli class.
+   * @param string $slno
+   *   It stores the serial no of the text.
+   * 
+   * @return string
+   *   It returns the string stored in the database.
+   */
+  function checkDone($con,$slno) {
+    $qry = "SELECT mark from to_do WHERE slno = " . $slno . ";";
+    $data = $con->query($qry);
+    $result = $data->fetch_assoc();
+    return $result["mark"];
+  }
+
 }
 
-// Creating an object of the above class InputItem.
-$input_item = new InputItem;
 ?>
