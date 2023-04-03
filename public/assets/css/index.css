@@ -1,0 +1,35 @@
+#list1 .form-control {
+  border-color: transparent;
+}
+
+#list1 .form-control:focus {
+  border-color: transparent;
+  box-shadow: none;
+}
+
+#list1 .select-input.form-control[readonly]:not([disabled]) {
+  background-color: #fbfbfb;
+}
+
+#pop-up {
+  z-index: 100;
+  position: absolute;
+  flex: 1 1 auto;
+  padding: var(--bs-card-spacer-y) var(--bs-card-spacer-x);
+  color: var(--bs-card-color);
+  display: flex;
+  align-items: center;
+  color: white;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%,-50%);
+  display: none;
+}
+
+.textdeco-line{
+  text-decoration: line-through;
+}
+
+.textdeco-noline {
+  text-decoration: none;
+}
